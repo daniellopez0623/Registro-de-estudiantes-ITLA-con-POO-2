@@ -15,7 +15,7 @@ $newestudiante = new Estudiante();
 
 $newestudiante->iniciodatos(0,$_POST['nombre'],$_POST['apellido'],$_POST['materia1'],$_POST['materia2'],$_POST['materia3'],$_POST['carrera']);
 
-$service->añadir($newestudiante);
+$listaestudent->añadir($newestudiante);
 
 
   header("location: index.php");
@@ -45,61 +45,65 @@ $service->añadir($newestudiante);
   <div class="card-body ">
 
 
-<form enctype="multipart/form-data" action=" añadir.php" method="post">
+                   <form  action=" add.php" method="post">
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
-                            <input type="text" class="form-control " id="nombre" name="nombre" placeholder="Nombre">
+                            <input type="text" class="form-control " id="nombre" name="nombre" placeholder="Ingrse su nombre">
                         </div>
                         <div class="form-group">
                             <label for="apellido">Apellido</label>
                             <input type="text" class="form-control" id="apellido" name="apellido"
-                                placeholder="Apellido">
+                                placeholder="Ingrse su apellido">
                         </div>
 
                         <div class="form-group">
                             <label for="matreias">Materias Favorita</label>
                             <input type="text" class="form-control" id="materia1" name="materia1"
-                                placeholder="materias1">
+                                placeholder="Materias Favorita">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="materia2" name="materia2"
-                                placeholder="materia2">
+                                placeholder="Materia Favorita">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="materia3" name="materia3"
-                                placeholder="materia3">
+                                placeholder="Materia Favorita">
                         </div>
 
                         <div class="form-group">
-                            <label>Selecciona tu Carrera</label>
+                            <label>Selecciona Su Carrera</label>
                             <select class="form-control" id="carrera" name="carrera">
                                 <?php
 
                               foreach ($servicios->carrera as $key => $text) : ?>
-                                <option value="<?php echo $key; ?>"><?php echo $text; ?></option>
-
-                                <?php endforeach; ?>
+                                <option value="<?php echo $key; ?>"><?php echo $text; ?>
+                                </option>
+                             <?php endforeach; ?>
 
                             </select>
                             <br>
                             <div class="form-group">
                                 <label for="photo">Seleciona la Foto</label>
-                                <input type="file" class="form-control" id="photo" name="profilePhoto">
+                                <input type="file" class="form-control" id="photo" name="proPhoto">
                             </div>
                             <br>
                             <center>
-                                <a href=" index.php" class="btn btn-outline-secondary">Volver atras &nbsp;&nbsp;
+                                <a href="index.php" class="btn btn-outline-secondary"> Atras &nbsp;&nbsp;
                                     <i class="fas fa-reply-all"></i></a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="submit" class="btn btn-outline-success">Enviar &nbsp;&nbsp; <i
-                                        class="fas fa-check"></i></button>
+                                <button type="submit" class="btn btn-outline-success">Enviar &nbsp;&nbsp; <i class="fas fa-paper-plane"></i></button>
                             </center>
                         </div>
 
-                        </form>
+                    </form>
         
   </div>
-  <div class="card-footer bg-transparent border-success">Footer</div>
+  <div class="card-footer bg-transparent border-success"> 
+  <center>
+  <p>Por: Daniel lopez</p>
+  <p>Telefono: 809-260-5869</p>
+  <p>Correo: 20186367@itla.edu.do</p>
+  </center>
+  </div>
 </div>
 
 </body>

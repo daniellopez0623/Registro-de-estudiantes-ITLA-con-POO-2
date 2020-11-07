@@ -8,13 +8,13 @@
   $servicioscookie = new servidorcookie();
   $servicios =new Servicios();
 
-  $listarestudiante = $servicioscookie->Getlista();
+ $listaestudent = $servicioscookie->Getlista();
 
-if(!empty($listarestudiante)){
+if(!empty($listaestudent)){
 
 if(isset($_GET['idcarrera'])){
 
-$listarestudiante = $servicios->buscar($listarestudiante,'idcarrera',$_GET['idcarrera']);
+$listaestudent = $servicios->buscar($listaestudent,'idcarrera',$_GET['idcarrera']);
 
 }
 }
@@ -70,14 +70,14 @@ $listarestudiante = $servicios->buscar($listarestudiante,'idcarrera',$_GET['idca
     
   <div class="row">
 
-             <?php if (empty($listaestudiante)) : ?>
+             <?php if (empty($listaestudent)) : ?>
 
                     <?php else : ?>
 
-                    <?php foreach ($listaestudiante as $estudiante) : ?>
+                    <?php foreach ($listaestudent as $estudiante) : ?>
 
                     <div class="col-md-4 ">
-                        <div class="card border-danger mb-4 letra" style="width: 18rem;">
+                        <div class="card border-danger mb-4 letra" style="width: 20rem;">
 
                             <img class="bd-placeholder-img card-img-top"
                                 src="<?php echo "imagenes/estudiante/" . $estudiante->proPhoto ?>" width="100%"
@@ -94,16 +94,17 @@ $listarestudiante = $servicios->buscar($listarestudiante,'idcarrera',$_GET['idca
                                 <label class="form-check-label " for="exampleCheck1">Activo</label>
                                 <br>
 
-                                <a href="editar.php?id=<?php echo $estudiante->id; ?>" class="card-link">
+                                <a href="update.php?id=<?php echo $estudiante->id; ?>" class="card-link">
                                     <span style="color: darkblue;"> &nbsp;&nbsp;<i class=" far
                                         fa-edit"></i> </span></a>
 
-                                <a href="elim.php?id=<?php echo $estudiante->id; ?>" class="card-link"
-                                    onclick="return confirmar()">&nbsp;&nbsp;
+                                <a href="delete.php?id=<?php echo $estudiante->id; ?>" class="card-link"
+                                    onclick="return confirmar()">&nbsp;&nbsp;&nbsp;
                                     <span style="color: red;"> <i class="far fa-trash-alt"></i></span></a>
 
-                                <a href="detalles.php" class="card-link">&nbsp;
-                                    <span style="color: grey;">Detalles &nbsp;<i
+                                <a href="detalles.php" class="card-link">&nbsp;&nbsp;
+                               <br> </br>
+                                    <span style="color: grey;">Detalles &nbsp;&nbsp;<i
                                             class="fas fa-info-circle"></i></span></a>
 
                             </div>
@@ -118,7 +119,9 @@ $listarestudiante = $servicios->buscar($listarestudiante,'idcarrera',$_GET['idca
 
   </div>
   <div class="card-footer text-muted">
-    2 days ago
+  <p>Por: Daniel lopez</p>
+  <p>Telefono: 809-260-5869</p>
+  <p>Correo: 20186367@itla.edu.do</p>
   </div>
 </div>
 

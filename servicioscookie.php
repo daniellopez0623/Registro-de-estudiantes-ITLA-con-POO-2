@@ -7,7 +7,7 @@ class servidorcookie implements serviciosprim{
     
     public function __construct(){
         
-        $this->servicio = new Servicios();
+        $this->servicios = new Servicios();
         $this->cookienombre = "estudiante";
     }
 public function Getlista(){
@@ -28,7 +28,7 @@ $element->set($elementoD);
 
 
 }else{
-    setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicio->cookietime(),"/");
+    setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicios->cookietime(),"/");
 }
 return $listaestudiante;
 
@@ -37,7 +37,7 @@ return $listaestudiante;
 public function GetByid($id){
     
     $listaestudiante = $this->Getlista();
-    $estudiante = $this->servicio->buscar($listaestudiante,'id',$id)[0];
+    $estudiante = $this->servicios->buscar($listaestudiante,'id',$id)[0];
     return $estudiante;
 }
 
@@ -47,7 +47,7 @@ public function añadir($entidad)
     $idestudiante=1;
     
     if(!empty($listaestudiante)){
-        $lastestudiante=$this->servicio->getLastElement($listaestudiante);
+        $lastestudiante=$this->servicios->getLastElement($listaestudiante);
         $idestudiante=$lastestudiante->id+1;
     }
 $entidad->id=$idestudiante;
@@ -69,7 +69,7 @@ $typeReplace = str_replace("image/", "", $_FILES['proPhoto']['type']);
  $name= $idestudiante . '.' . $typeReplace;
  $tmpname= $photofile['tmp_name'];
  
- $success=$this->servicio->uploadImage('imagenes/estudiante/',$name,$tmpname,$type,$size);
+ $success=$this->servicios->uploadImage('imagenes/estudiante/',$name,$tmpname,$type,$size);
  
  if($success){
      $entidad->proPhoto= $name;
@@ -79,7 +79,7 @@ $typeReplace = str_replace("image/", "", $_FILES['proPhoto']['type']);
 
 array_push($listaestudiante,$entidad);
 
- setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicio->cookietime(),"/");
+ setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicios->cookietime(),"/");
     
 }
 
@@ -88,7 +88,7 @@ public function editar($id,$entidad){
 $elemento=$this->GetByid($id);
     $listaestudiante = $this->Getlista();
 
-    $elementoindex=$this->servicio->getelemento($listaestudiante,'id',$id);
+    $elementoindex=$this->servicios->getelemento($listaestudiante,'id',$id);
 
 if(isset($_FILES['proPhoto'])){
     
@@ -106,7 +106,7 @@ $typeReplace = str_replace("image/", "", $_FILES['proPhoto']['type']);
  $name=$id . '.' . $typeReplace;
  $tmpname=$photofile['tmp_name'];
  
- $success=$this->servicio->uploadImage('imagenes/estudiante/',$name,$tmpname,$type,$size);
+ $success=$this->servicios->uploadImage('imagenes/estudiante/',$name,$tmpname,$type,$size);
  
  if($success){
      $entidad->proPhoto= $name;
@@ -116,7 +116,7 @@ $typeReplace = str_replace("image/", "", $_FILES['proPhoto']['type']);
 }
  
 $listaestudiante[$elementoindex]=$entidad;
-setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicio->cookietime(),"/");
+setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicios->cookietime(),"/");
     
 }
 
@@ -125,11 +125,11 @@ setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicio->coo
 
         
         $listaestudiante=$this->Getlista();
-        $elementoindex=$this->servicio->getelemento($listaestudiante,'id',$id);
+        $elementoindex=$this->servicios->getelemento($listaestudiante,'id',$id);
 
 unset($listaestudiante[$elementoindex]);
 $listaestudiante=array_values($listaestudiante);
-setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicio->cookietime(),"/");
+setcookie($this->cookienombre,json_encode($listaestudiante),$this->servicios->cookietime(),"/");
 
 
 
